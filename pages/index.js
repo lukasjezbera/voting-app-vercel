@@ -156,8 +156,8 @@ export default function Home() {
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 20 }}>
                   <div>
                     <label style={{ fontSize: 13, fontWeight: 500, color: "#374151", display: "block", marginBottom: 6 }}>Tvoje jméno</label>
-                    <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Jan Novák"
-                      style={{ width: "100%", padding: "10px 12px", border: "1px solid #d1d5db", borderRadius: 8, fontSize: 14, fontFamily: "inherit", boxSizing: "border-box" }} />
+                    <input value={name} onChange={(e) => setName(e.target.value)}
+                      style={{ width: "100%", padding: "10px 12px", border: `1px solid ${!name.trim() ? "#fca5a5" : "#d1d5db"}`, background: !name.trim() ? "#fef2f2" : "#fff", borderRadius: 8, fontSize: 14, fontFamily: "inherit", boxSizing: "border-box" }} />
                   </div>
                   <div>
                     <label style={{ fontSize: 13, fontWeight: 500, color: "#374151", display: "block", marginBottom: 6 }}>Vyber projekt</label>
@@ -215,7 +215,6 @@ export default function Home() {
                   }}>
                   {saving ? "Ukládám..." : "Odeslat hodnocení"}
                 </button>
-                {!name.trim() && <p style={{ fontSize: 12, color: "#ef4444", textAlign: "center", marginTop: 8 }}>Vyplň prosím své jméno</p>}
               </>
             )}
           </div>
