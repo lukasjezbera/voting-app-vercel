@@ -127,7 +127,7 @@ export default function Home() {
             <p style={{ fontSize: 15, color: "#6b7280", margin: "4px 0 0" }}>Hodnocení projektů</p>
             <p style={{ fontSize: 13, color: "#9ca3af", margin: "4px 0 0" }}>19. 2. – 20. 2. 2026</p>
           </div>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Alza.cz_Logo.svg/1280px-Alza.cz_Logo.svg.png" alt="Alza.cz" style={{ height: 36, objectFit: "contain" }} />
+          <img src="/alza-logo.png" alt="Alza.cz" style={{ height: 36, objectFit: "contain" }} />
         </div>
 
         {/* Tabs */}
