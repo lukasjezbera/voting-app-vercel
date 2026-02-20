@@ -116,6 +116,7 @@ export default function Home() {
     <>
       <Head>
         <title>Finance AI Hackathon — Hodnocení</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
       <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 20px 60px", fontFamily: "'Inter', sans-serif", color: "#111827" }}>
@@ -153,7 +154,7 @@ export default function Home() {
               <p style={{ color: "#9ca3af", textAlign: "center", padding: 40 }}>Zatím nejsou přidané žádné projekty.</p>
             ) : (
               <>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 20 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12, marginBottom: 20 }}>
                   <div>
                     <label style={{ fontSize: 13, fontWeight: 500, color: "#374151", display: "block", marginBottom: 6 }}>Tvoje jméno</label>
                     <input value={name} onChange={(e) => setName(e.target.value)}
@@ -255,11 +256,11 @@ export default function Home() {
         {/* ==================== RESULTS UNLOCKED ==================== */}
         {!loading && tab === "results" && resultsOk && (
           <div>
-            <div style={{ display: "flex", gap: 16, marginBottom: 24 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 24 }}>
               {[[totalVoters, "Hodnotitelů"], [votes.length, "Hodnocení celkem"], [projects.length, "Projektů"]].map(([v, l], i) => (
-                <div key={i} style={{ flex: 1, background: "#f9fafb", border: "1px solid #e5e7eb", borderRadius: 12, padding: "20px", textAlign: "center" }}>
-                  <div style={{ fontSize: 32, fontWeight: 700, color: "#111827" }}>{v}</div>
-                  <div style={{ fontSize: 13, color: "#6b7280", marginTop: 2 }}>{l}</div>
+                <div key={i} style={{ flex: "1 1 80px", minWidth: 80, background: "#f9fafb", border: "1px solid #e5e7eb", borderRadius: 12, padding: "16px 12px", textAlign: "center" }}>
+                  <div style={{ fontSize: 28, fontWeight: 700, color: "#111827" }}>{v}</div>
+                  <div style={{ fontSize: 12, color: "#6b7280", marginTop: 2 }}>{l}</div>
                 </div>
               ))}
             </div>
@@ -274,13 +275,13 @@ export default function Home() {
               const tc = rank < 3 ? ["#92400e", "#4b5563", "#9a3412"][rank] : "#9ca3af";
               const pc = r.pct >= 70 ? ["#d1fae5", "#065f46"] : r.pct >= 40 ? ["#fef3c7", "#92400e"] : ["#fee2e2", "#991b1b"];
               return (
-                <div key={r.name} style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 14, padding: "20px 24px", marginBottom: 12 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                      <div style={{ width: 36, height: 36, borderRadius: 10, background: rc, color: tc, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 14 }}>{rank + 1}</div>
-                      <div>
-                        <div style={{ fontWeight: 600, fontSize: 17, color: "#111827" }}>{r.name}</div>
-                        <div style={{ fontSize: 13, color: "#6b7280" }}>{r.owner}</div>
+                <div key={r.name} style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 14, padding: "16px", marginBottom: 12, overflow: "hidden" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
+                      <div style={{ width: 32, height: 32, borderRadius: 8, background: rc, color: tc, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 13, flexShrink: 0 }}>{rank + 1}</div>
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ fontWeight: 600, fontSize: 15, color: "#111827", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.name}</div>
+                        <div style={{ fontSize: 12, color: "#6b7280" }}>{r.owner}</div>
                       </div>
                     </div>
                     <div style={{ textAlign: "right" }}>
@@ -289,14 +290,14 @@ export default function Home() {
                       <div style={{ fontSize: 12, color: "#9ca3af", marginTop: 4 }}>{r.voters} hodnocení</div>
                     </div>
                   </div>
-                  <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px 24px" }}>
+                  <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "1fr", gap: "6px 0" }}>
                     {CRITERIA.map((c, ci) => (
-                      <div key={ci} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                        <span style={{ fontSize: 12, color: "#6b7280", minWidth: 150, flexShrink: 0 }}>{c.name} (x{c.weight})</span>
-                        <div style={{ width: 100, flexShrink: 0, height: 8, background: "#f3f4f6", borderRadius: 4, overflow: "hidden" }}>
+                      <div key={ci} style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
+                        <span style={{ fontSize: 11, color: "#6b7280", width: 130, flexShrink: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{c.name} (x{c.weight})</span>
+                        <div style={{ flex: 1, minWidth: 40, height: 8, background: "#f3f4f6", borderRadius: 4, overflow: "hidden" }}>
                           <div style={{ height: "100%", width: `${(r.avgs[ci] / 5) * 100}%`, background: BAR_COLOR, borderRadius: 4 }} />
                         </div>
-                        <span style={{ fontSize: 13, fontWeight: 600, color: "#374151", minWidth: 28, textAlign: "right" }}>{r.avgs[ci]}</span>
+                        <span style={{ fontSize: 13, fontWeight: 600, color: "#374151", minWidth: 28, textAlign: "right", flexShrink: 0 }}>{r.avgs[ci]}</span>
                       </div>
                     ))}
                   </div>
