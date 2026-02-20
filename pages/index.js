@@ -121,10 +121,13 @@ export default function Home() {
       </Head>
       <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 20px 60px", fontFamily: "'Inter', sans-serif", color: "#111827" }}>
         {/* Header */}
-        <div style={{ textAlign: "center", padding: "32px 0 16px", borderBottom: "1px solid #e5e7eb", marginBottom: 24 }}>
-          <h1 style={{ fontSize: 28, fontWeight: 700, margin: 0, letterSpacing: "-0.025em" }}>Finance AI Hackathon</h1>
-          <p style={{ fontSize: 15, color: "#6b7280", margin: "4px 0 0" }}>Hodnocení projektů</p>
-          <p style={{ fontSize: 13, color: "#9ca3af", margin: "4px 0 0" }}>19. 2. – 20. 2. 2026</p>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "24px 0 16px", borderBottom: "1px solid #e5e7eb", marginBottom: 24 }}>
+          <div>
+            <h1 style={{ fontSize: 28, fontWeight: 700, margin: 0, letterSpacing: "-0.025em" }}>Finance AI Hackathon</h1>
+            <p style={{ fontSize: 15, color: "#6b7280", margin: "4px 0 0" }}>Hodnocení projektů</p>
+            <p style={{ fontSize: 13, color: "#9ca3af", margin: "4px 0 0" }}>19. 2. – 20. 2. 2026</p>
+          </div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Alza.cz_Logo.svg/1280px-Alza.cz_Logo.svg.png" alt="Alza.cz" style={{ height: 36, objectFit: "contain" }} />
         </div>
 
         {/* Tabs */}
