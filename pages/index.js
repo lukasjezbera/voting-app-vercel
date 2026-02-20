@@ -125,7 +125,6 @@ export default function Home() {
           <div>
             <h1 style={{ fontSize: 28, fontWeight: 700, margin: 0, letterSpacing: "-0.025em" }}>Finance AI Hackathon</h1>
             <p style={{ fontSize: 15, color: "#6b7280", margin: "4px 0 0" }}>Hodnocení projektů</p>
-            <p style={{ fontSize: 13, color: "#9ca3af", margin: "4px 0 0" }}>19. 2. – 20. 2. 2026</p>
           </div>
           <img src="/alza-logo.png" alt="Alza.cz" style={{ height: 36, objectFit: "contain" }} />
         </div>
